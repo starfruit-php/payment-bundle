@@ -1,0 +1,9 @@
+starfruit_payment_route_demo:
+    resource: "@StarfruitPaymentBundle/src/Controller/Demo/*"
+    type: annotation
+    prefix: /starfruit/demo
+
+starfruit_payment_route:
+    resource: "@StarfruitPaymentBundle/src/Controller/*"
+    type: annotation
+    prefix: /starfruit/payment

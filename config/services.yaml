@@ -1,0 +1,40 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    Starfruit\PaymentBundle\Controller\:
+        resource: '../src/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    Starfruit\PaymentBundle\Service\:
+        resource: '../src/Service'
+        public: true
+
+    Starfruit\PaymentBundle\Event\:
+        resource: '../src/Event'
+        public: true
+
+    Starfruit\PaymentBundle\EventListener\Demo\VNPayListener:
+        tags:
+            - { name: kernel.event_listener, event: starfruit.payment.vnpay.findOrder, method: findOrder }
+            - { name: kernel.event_listener, event: starfruit.payment.vnpay.paymentSuccess, method: paymentSuccess }
+            - { name: kernel.event_listener, event: starfruit.payment.vnpay.paymentFailure, method: paymentFailure }
+            - { name: kernel.event_listener, event: starfruit.payment.vnpay.paymentCancel, method: paymentCancel }
+            - { name: kernel.event_listener, event: starfruit.payment.vnpay.transactionResponse, method: transactionResponse }
+
+# add more services, or override services that need manual wiring
+#    Starfruit\PaymentBundle\ExampleClass:
+#        arguments:
+#            - "@service_id"
+#            - "plain_value"
+#            - "%parameter%"

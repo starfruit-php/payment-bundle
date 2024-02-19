@@ -1,0 +1,27 @@
+{
+  "name":"starfruit/payment-bundle",
+  "description":"Starfruit Payment Bundle",
+  "keywords":[
+    "starfruit", "payment", "vnpay"
+  ],
+  "homepage":"https://github.com/starfruit-php/payment-bundle",
+  "license":"MIT",
+  "authors":[
+    {
+      "name":"Nguyen Hoang Anh",
+      "email":"anhnh@starfruit.com.vn",
+      "role":"Developer"
+    }
+  ],
+  "require":{
+  },
+  "require-dev":{
+  },
+  "suggest":{
+  },
+  "autoload": {
+    "psr-4": {
+      "Starfruit\\PaymentBundle\\": "src/"
+    }
+  }
+}
